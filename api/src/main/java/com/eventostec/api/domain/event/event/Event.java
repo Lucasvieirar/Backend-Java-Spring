@@ -1,4 +1,4 @@
-package com.eventostec.api.domain.event;
+package com.eventostec.api.domain.event.event;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
