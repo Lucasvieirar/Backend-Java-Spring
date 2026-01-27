@@ -6,8 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.UUID;
+
 @Service
 public class EventServices {
+    @Autowired
+    private AmazonS3 s3Client;
 
     public Event createEvent(EventRequestDTO data){
         String imgUrl = null;
@@ -26,6 +32,18 @@ public class EventServices {
     }
 
     private String uploadImg(MultipartFile file){
+            String imgNmae = UUID.randomUUID() + "-" + multipartFile.getOriginalFilename();
+            try{
+                File file = this.convertMultipartToFile(multipartFile);
+            } catch (Exception e) {
+                return "";
+            }
 
+            private File convertMultipartToFile(){
+                File convFile = new File(multipartFile.getOriginalFilename();
+                FileOutputStream fos = new FileOutputStream(convFile);
+                fos.write(multipartFile.getBytes());
+                fos.close();
+        }
     }
 }
